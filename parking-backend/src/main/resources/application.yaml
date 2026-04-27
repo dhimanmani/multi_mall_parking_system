@@ -1,0 +1,42 @@
+app:
+  jwt:
+    secret: -jZ1jsozn5vPzacpu3ojC5KPqcTSsGh91aoqHY_xwT0
+    expiration-ms: 86400000   # 24 hours
+
+spring:
+  application:
+    name: parking-backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/parking_db
+    username: parking_user
+    password: park1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update                # auto-updates schema in dev — convenient
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true              # makes the SQL output readable
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+logging:
+  level:
+    com.ashu.parking_backend: DEBUG       # your package — see all logs
+    org.hibernate.SQL: DEBUG          # see SQL statements
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    try-it-out-enabled: true        #enables the "Try it out" button
+    operations-sorter: method       #sort endpoints by HTTP method
+    tags-sorter: alpha              #sorts tag group alphabetically
+    display-request-duration: true  #show how long each request took
+  api-docs:
+    path: /v3/api-docs
